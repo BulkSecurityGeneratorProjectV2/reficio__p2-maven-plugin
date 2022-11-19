@@ -26,6 +26,7 @@ import org.mockito.Mockito;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.UUID;
 
 import static org.mockito.Mockito.when;
@@ -63,7 +64,7 @@ public class CategoryPublisherTest {
         // given
         P2ApplicationLauncher launcher = Mockito.mock(P2ApplicationLauncher.class, Mockito.RETURNS_DEEP_STUBS);
         when(launcher.execute(Mockito.anyInt())).thenReturn(137);
-        File file = File.createTempFile(UUID.randomUUID().toString(), UUID.randomUUID().toString());
+        File file = Files.createTempFile(UUID.randomUUID().toString(), UUID.randomUUID().toString()).toFile();
         file.deleteOnExit();
 
         // when
